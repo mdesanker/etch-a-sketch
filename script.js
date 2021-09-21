@@ -22,3 +22,11 @@ grids.forEach((grid) => {   // Add eventListener for each item in grids nodelist
         grid.style.cssText = "background-color: black"
     })
 })
+
+// Clear the etch-a-sketch when clear button is pressed
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => {
+    grids.forEach((grid) => {
+        grid.style.cssText = 'background-color: white';
+    })
+})
