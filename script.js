@@ -32,6 +32,21 @@ function draw(color) {
     })
 }
 
+// Function that draws a random color each pixel
+function drawRandomColor() {
+    const grids = document.querySelectorAll('#container div'); // Select all divs with a parent node with id='container'
+    grids.forEach((grid) => {   // Add eventListener for each item in grids nodelist
+        grid.addEventListener('mouseover', () => {
+            // Generate a new random color for each mouseover event
+            let num1 = Math.round(Math.random() * (256));
+            let num2 = Math.round(Math.random() * (256));
+            let num3 = Math.round(Math.random() * (256));
+            let color = `rgb(${num1}, ${num2}, ${num3})`;
+            grid.style.backgroundColor = color;
+        })
+    })
+}
+
 makeRows(32, 32)
 
 const gridSize = document.querySelector('.slider');
@@ -64,6 +79,12 @@ eraser.addEventListener('click', () => {
 const colorMode = document.querySelector('#draw');
 colorMode.addEventListener('click', () => {
     draw(`black`)
+})
+
+// Draw with a random color on each pixel after pressing rainbow mode
+const rainbowMode = document.querySelector('#rainbow');
+rainbowMode.addEventListener('click', () => {
+    drawRandomColor();
 })
 
 // Clear the etch-a-sketch when clear button is pressed
