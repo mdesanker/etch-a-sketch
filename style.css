@@ -20,6 +20,7 @@ body {
 .menu {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 button {
     font-size: 24px;
@@ -29,9 +30,13 @@ button {
 .slide-container {
     width: 100%;
 }
+.grid-size {
+    text-align: center;
+    margin-top: 50px;
+}
 .slider {
     height: 25px;
-    padding: 20px 0;
+    padding: 0;
     width: 100%;
     color: black;
 }
@@ -41,7 +46,6 @@ button {
 }
 #container {
     display: grid;
-    /* grid-gap: 1em; */
     width: 500px;
     height: 500px;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
@@ -49,9 +53,7 @@ button {
     box-shadow: 0 0 5px gray;
 }
 .grid-item {
-    /* padding: 1em; */
     background-color: white;
-    /* border: 1px solid black; */
     text-align: center;
 }
 .footer {
@@ -59,4 +61,6 @@ button {
     width: 100%;
     bottom: 0;
     text-align: center;
+    height: 30px;
+    align-items: center;
 }

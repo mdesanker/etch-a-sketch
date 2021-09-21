@@ -47,18 +47,24 @@ function drawRandomColor() {
     })
 }
 
+function removeGrid() {
+    const gridElements = document.getElementsByClassName('grid-item');
+    while (gridElements.length > 0) {
+        gridElements[0].parentElement.removeChild(gridElements[0]);
+    }
+}
+
 makeRows(32, 32)
 
 const gridSize = document.querySelector('.slider');
 const gridSizeOutput = document.querySelector('.grid-size');
-gridSizeOutput.textContent = gridSize.value
-// console.log(gridSize)
+gridSizeOutput.textContent = `${gridSize.value} x ${gridSize.value}`
 gridSize.addEventListener('input', () => {
-    gridSizeOutput.textContent = gridSize.value;
-    clearScreen()
-    // console.log(gridSize.value)
-
-    // makeRows(gridSize.value, gridSize.value)
+    let size = gridSize.value
+    gridSizeOutput.textContent = `${size} x ${size}`;
+    removeGrid();
+    makeRows(size, size);
+    draw('black');
 })
 
 // Draw on mouseover
@@ -78,7 +84,7 @@ eraser.addEventListener('click', () => {
 // Enable draw after pressing color mode
 const colorMode = document.querySelector('#draw');
 colorMode.addEventListener('click', () => {
-    draw(`black`)
+    draw(`black`);
 })
 
 // Draw with a random color on each pixel after pressing rainbow mode
@@ -89,4 +95,4 @@ rainbowMode.addEventListener('click', () => {
 
 // Clear the etch-a-sketch when clear button is pressed
 const clear = document.getElementById('clear');
-clear.addEventListener('click', clearScreen)
+clear.addEventListener('click', clearScreen);
