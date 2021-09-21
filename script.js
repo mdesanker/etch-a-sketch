@@ -14,19 +14,34 @@ function makeRows(rows, cols) {
     }
 }
 
-makeRows(64, 64)
+// Function that clears the etch-a-sketch screen
+function clearScreen() {
+    const grids = document.querySelectorAll('#container div');
+    grids.forEach((grid) => {
+        grid.style.cssText = 'background-color: white';
+    })
+}
+
+makeRows(32, 32)
+
+const gridSize = document.querySelector('.slider');
+const gridSizeOutput = document.querySelectorAll('p.grid-size');
+gridSizeOutput.textContent = gridSize.value
+// console.log(gridSize)
+gridSize.addEventListener('input', () => {
+    console.log(gridSize.value)
+
+    makeRows(gridSize.value, gridSize.value)
+})
+
 
 const grids = document.querySelectorAll('#container div'); // Select all divs with a parent node with id='container'
 grids.forEach((grid) => {   // Add eventListener for each item in grids nodelist
     grid.addEventListener('mouseover', () => {
-        grid.style.cssText = "background-color: black"
+        grid.style.cssText = "background-color: black";
     })
 })
 
 // Clear the etch-a-sketch when clear button is pressed
 const clear = document.getElementById('clear');
-clear.addEventListener('click', () => {
-    grids.forEach((grid) => {
-        grid.style.cssText = 'background-color: white';
-    })
-})
+clear.addEventListener('click', clearScreen)

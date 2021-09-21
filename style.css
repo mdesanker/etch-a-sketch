@@ -21,6 +21,15 @@ button {
     font-size: 24px;
     padding: 10px 50px;
 }
+.slide-container {
+    width: 100%;
+}
+.slider {
+    height: 25px;
+    padding: 20px 0;
+    width: 100%;
+    color: black;
+}
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
