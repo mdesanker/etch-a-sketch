@@ -1,19 +1,14 @@
 // script.js //
-function genGrid(num) {
-    const container = document.getElementById('container')
-    for (i = 0; i < num; i++) {
-        let row = document.createElement('div');
-        row.classList.add('row')
-        for (j = 0; j < num; j++) {
-            let cell = document.createElement('div');
-            cell.style.cssText = ""
-            cell.classList.add('grid-item');
-            cell.textContent = (i * num) + j;
-            row.appendChild(cell);
-        }
-        container.appendChild(row);
-    }
+const container = document.getElementById('container');
 
+function makeRows(rows, cols) {
+    container.style.setProperty('--grid-rows', rows);
+    container.style.setProperty('--grid-cols', cols);
+    for (i = 0; i < (rows * cols); i++) {
+        let cell = document.createElement('div');
+        cell.textContent = (i + 1);
+        container.appendChild(cell).className = 'grid-item';
+    }
 }
 
-genGrid(4)
+makeRows(16, 16)
