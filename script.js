@@ -14,12 +14,10 @@ function makeRows(rows, cols) {
     }
 }
 
-makeRows(16, 16)
+makeRows(64, 64)
 
-const grids = document.querySelectorAll('#container div');
-console.log(grids)
-console.log(grids.length);
-grids.forEach((grid) => {
+const grids = document.querySelectorAll('#container div'); // Select all divs with a parent node with id='container'
+grids.forEach((grid) => {   // Add eventListener for each item in grids nodelist
     grid.addEventListener('mouseover', () => {
         grid.style.cssText = "background-color: black"
     })
