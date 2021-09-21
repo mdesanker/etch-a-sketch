@@ -22,24 +22,48 @@ function clearScreen() {
     })
 }
 
+// Function that draws specific color
+function draw(color) {
+    const grids = document.querySelectorAll('#container div'); // Select all divs with a parent node with id='container'
+    grids.forEach((grid) => {   // Add eventListener for each item in grids nodelist
+        grid.addEventListener('mouseover', () => {
+            grid.style.cssText = `background-color: ${color}`;
+        })
+    })
+}
+
 makeRows(32, 32)
 
 const gridSize = document.querySelector('.slider');
-const gridSizeOutput = document.querySelectorAll('p.grid-size');
+const gridSizeOutput = document.querySelector('.grid-size');
 gridSizeOutput.textContent = gridSize.value
 // console.log(gridSize)
 gridSize.addEventListener('input', () => {
-    console.log(gridSize.value)
+    gridSizeOutput.textContent = gridSize.value;
+    clearScreen()
+    // console.log(gridSize.value)
 
-    makeRows(gridSize.value, gridSize.value)
+    // makeRows(gridSize.value, gridSize.value)
 })
 
-
+// Draw on mouseover
 const grids = document.querySelectorAll('#container div'); // Select all divs with a parent node with id='container'
 grids.forEach((grid) => {   // Add eventListener for each item in grids nodelist
     grid.addEventListener('mouseover', () => {
         grid.style.cssText = "background-color: black";
     })
+})
+
+// Erase on mouseover after eraser button pressed
+const eraser = document.querySelector('#eraser');
+eraser.addEventListener('click', () => {
+    draw('white');
+})
+
+// Enable draw after pressing color mode
+const colorMode = document.querySelector('#draw');
+colorMode.addEventListener('click', () => {
+    draw(`black`)
 })
 
 // Clear the etch-a-sketch when clear button is pressed
